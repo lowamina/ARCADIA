@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Arcadia Cafe &amp; Restaurant | Dine &amp; Celebrate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1d3a2c; --deep:#11241b; --moss:#2f5541; --gold:#b39b2a; --gold-soft:#d8c374;
+    --cream:#f6f1e5; --paper:#fbf8f1; --ink:#1b231e; --muted:#5f6b62; --line:#d9d1bd; --wa:#1faa52;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Karla',system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.6;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:'Marcellus',Georgia,serif;font-weight:400;margin:0;line-height:1.12}
+  .wrap{width:min(1140px,92vw);margin:0 auto}
+  .eyebrow{font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .btn{display:inline-block;padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;font-weight:700;font-size:.95rem;border:1.5px solid transparent;cursor:pointer;font-family:inherit}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{background:#9a8422}
+  .btn-ghost{border-color:currentColor;background:transparent}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+
+  .demo-banner{background:var(--deep);color:#d8e3dc;font-size:.78rem;text-align:center;padding:.5rem 1rem}
+
+  /* header */
+  header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+  .brand img{width:50px;height:50px;border-radius:50%}
+  .brand b{font-family:'Marcellus',serif;font-weight:400;font-size:1.35rem;letter-spacing:.12em;display:block;line-height:1}
+  .brand small{font-size:.66rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+  nav{display:flex;gap:1.6rem;align-items:center}
+  nav a{text-decoration:none;font-size:.92rem;font-weight:500}
+  nav a:hover{color:var(--gold)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:999px;padding:.45rem .9rem;font-family:inherit;font-weight:700;cursor:pointer}
+
+  /* hero */
+  .hero{background:var(--forest);color:var(--cream);padding:3.4rem 0 0;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;align-items:end}
+  .hero-text{padding-bottom:3.4rem}
+  .hero h1{font-size:clamp(2.6rem,5.6vw,4.4rem);margin:.8rem 0 1.1rem}
+  .hero h1 em{font-style:normal;color:var(--gold-soft)}
+  .hero p{color:#cfdcd3;max-width:440px;margin:0 0 1.8rem;font-size:1.05rem}
+  .hero .btns{display:flex;gap:.8rem;flex-wrap:wrap}
+  .arch{border-radius:320px 320px 0 0;overflow:hidden;border:6px solid var(--gold);border-bottom:0;aspect-ratio:1/0.82;background:#24463a center/cover no-repeat;background-image:url("img/hero.jpg")}
+  .branches-strip{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.8rem;font-size:.85rem;color:#b9cbbf}
+  .branches-strip span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:.5rem;vertical-align:middle}
+
+  /* service band */
+  .band{background:var(--deep);color:#d9e4dc}
+  .band .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem 1.6rem;padding:1.1rem 0;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase}
+  .band b{color:var(--gold-soft);font-weight:700}
+
+  section{padding:5rem 0}
+  .head{text-align:center;max-width:640px;margin:0 auto 2.8rem}
+  .head h2{font-size:clamp(2.1rem,4.4vw,3.2rem);margin:.6rem 0 .8rem}
+  .head p{margin:0;color:var(--muted)}
+
+  /* two paths */
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+  .path{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:2.2rem;display:flex;flex-direction:column;gap:1rem}
+  .path .ic{width:54px;height:54px;border-radius:50%;background:var(--forest);color:var(--gold-soft);display:grid;place-items:center;font-family:'Marcellus',serif;font-size:1.4rem}
+  .path h3{font-size:1.9rem}
+  .path p{margin:0;color:var(--muted)}
+  .path ul{margin:0;padding-left:1.1rem;color:var(--ink)}
+  .path .btn{align-self:flex-start;margin-top:auto}
+  .path.dark{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+  .path.dark p{color:#c8d7cd}
+  .path.dark ul{color:#e7eee9}
+  .path.dark .ic{background:var(--gold);color:#fff}
+
+  /* menu tabs */
+  .menu-sec{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tabs{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+  .tab{border:1.5px solid var(--forest);background:transparent;color:var(--forest);padding:.55rem 1.2rem;border-radius:999px;font-family:inherit;font-weight:700;cursor:pointer;font-size:.9rem}
+  .tab[aria-selected="true"]{background:var(--forest);color:var(--cream)}
+  .dishes{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem;max-width:880px;margin:0 auto}
+  .dish{display:flex;align-items:baseline;gap:.8rem;padding:1rem 0;border-bottom:1px dashed var(--line)}
+  .dish h3{font-size:1.2rem;white-space:nowrap}
+  .dish .dots{flex:1;border-bottom:1px dotted #bfb59c;transform:translateY(-4px)}
+  .dish span{color:var(--muted);font-size:.85rem;white-space:nowrap}
+  .dish p{margin:.15rem 0 0;color:var(--muted);font-size:.88rem;width:100%}
+  .dish-wrap{display:flex;flex-direction:column;border-bottom:1px dashed var(--line);padding:1rem 0}
+  .dish-wrap .dish{border:0;padding:0}
+  .menu-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:1.6rem}
+
+  /* events */
+  .events-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+  .ev-list{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.8rem}
+  .ev{border-left:3px solid var(--gold);padding:.3rem 0 .3rem 1rem}
+  .ev h3{font-size:1.25rem}
+  .ev p{margin:.2rem 0 0;color:var(--muted);font-size:.9rem}
+  .arch-sm{border-radius:240px 240px 18px 18px;aspect-ratio:3/4;background:#cfc6b0 center/cover no-repeat;position:relative;overflow:hidden;border:5px solid var(--paper);box-shadow:0 0 0 1px var(--line)}
+  .arch-sm.has-img{background-image:var(--img)}
+  .arch-sm span{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:rgba(17,36,27,.8);color:#fff;font-size:.72rem;padding:.2rem .6rem;border-radius:999px;white-space:nowrap}
+  .arch-sm.has-img span{display:none}
+  .halls{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
+  .hall{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:1.4rem}
+  .hall h3{font-size:1.3rem}
+  .hall .cap{font-family:'Marcellus',serif;font-size:2rem;color:var(--forest);margin:.4rem 0 .2rem}
+  .hall p{margin:0;color:var(--muted);font-size:.88rem}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+
+  /* booking */
+  .booking{background:var(--forest);color:var(--cream)}
+  .booking .head p{color:#c8d7cd}
+  .book-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:1.6rem;align-items:start}
+  .book-card{background:var(--paper);color:var(--ink);border-radius:24px;padding:2rem}
+  .mode{display:grid;grid-template-columns:1fr 1fr;background:#ece5d4;border-radius:999px;padding:4px;margin-bottom:1.6rem}
+  .mode button{border:0;background:transparent;padding:.7rem;border-radius:999px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;color:var(--forest)}
+  .mode button[aria-pressed="true"]{background:var(--forest);color:var(--cream)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+  .field label{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .field input,.field select,.field textarea{font:inherit;padding:.75rem .85rem;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%}
+  .field textarea{min-height:84px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+  .seat{display:flex;gap:.5rem;flex-wrap:wrap}
+  .seat label{display:flex;align-items:center;gap:.4rem;border:1px solid var(--line);border-radius:999px;padding:.5rem .9rem;cursor:pointer;font-size:.92rem;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:500;background:#fff}
+  .seat input{accent-color:var(--forest);margin:0}
+  .only-event{display:none}
+  .is-event .only-event{display:block}
+  .is-event .only-table{display:none}
+  .err{color:#a3261e;font-size:.88rem;min-height:1.2em;margin:.2rem 0 .6rem}
+  .send{width:100%;background:var(--wa);color:#fff;border:0;border-radius:999px;padding:1rem;font-family:inherit;font-weight:700;font-size:1rem;cursor:pointer}
+  .send:hover{background:#178a42}
+  .sent{display:none;margin-top:.9rem;text-align:center;font-size:.92rem;color:var(--muted)}
+  .sent.show{display:block}
+  .sent a{color:var(--forest);font-weight:700}
+
+  .summary{background:var(--deep);border:1px solid rgba(216,195,116,.35);border-radius:24px;padding:1.8rem;position:sticky;top:96px}
+  .summary h3{font-size:1.5rem;color:var(--gold-soft);margin-bottom:1rem}
+  .summary dl{margin:0;display:grid;gap:.7rem}
+  .summary div{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:.55rem;font-size:.93rem}
+  .summary dt{color:#9fb5a7}
+  .summary dd{margin:0;text-align:right;font-weight:700}
+  .summary p{font-size:.82rem;color:#9fb5a7;margin:1rem 0 0}
+
+  /* visit */
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem}
+  .vcard{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:1.6rem}
+  .vcard h3{font-size:1.5rem;margin-bottom:.7rem}
+  .vcard p{margin:0 0 .5rem;color:var(--muted)}
+  .vcard a{color:var(--forest);font-weight:700}
+
+  footer{background:var(--deep);color:#a9bdb0;padding:2.4rem 0;font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+  footer img{width:40px;height:40px;border-radius:50%}
+  footer a{color:var(--gold-soft);text-decoration:none}
+
+  .float-book{position:fixed;right:16px;bottom:16px;z-index:19;background:var(--gold);color:#fff;text-decoration:none;padding:.8rem 1.2rem;border-radius:999px;font-weight:700;font-size:.9rem;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+
+  @media (max-width:960px){
+    .hero-grid,.events-grid,.book-grid{grid-template-columns:1fr}
+    .hero-text{padding-bottom:0}
+    .arch{margin-top:1rem}
+    .paths{grid-template-columns:1fr}
+    .dishes{grid-template-columns:1fr}
+    .halls,.visit-grid{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr 1fr}
+    .summary{position:static}
+    nav{display:none}
+    nav.open{display:flex;flex-direction:column;align-items:flex-start;position:absolute;top:74px;left:0;right:0;background:var(--paper);padding:1rem 4vw 1.4rem;gap:1rem;border-bottom:1px solid var(--line)}
+    .menu-btn{display:block}
+  }
+  @media (max-width:560px){
+    section{padding:3.6rem 0}
+    .grid2,.ev-list{grid-template-columns:1fr}
+    .book-card{padding:1.3rem}
+    .dish h3{white-space:normal}
+    .brand small{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">DEMO by Code.lowa for Arcadia Cafe &amp; Restaurant. Menu items, halls and times are samples. Remove this bar after approval.</div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/logo.png" alt="Arcadia Cafe &amp; Restaurant logo"><span><b>ARCADIA</b><small>Cafe &amp; Restaurant</small></span></a>
+    <nav id="nav">
+      <a href="#dine">Dine</a>
+      <a href="#menu">Menu</a>
+      <a href="#events">Events</a>
+      <a href="#visit">Visit</a>
+      <a class="btn btn-gold" href="#book" style="color:#fff">Book a table</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">Menu</button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <div class="eyebrow">Multi-cuisine fine dining</div>
+        <h1>A heavenly setting for <em>every table</em> and every celebration.</h1>
+        <p>Natural greenery, warm light and food from many kitchens. Book a table for tonight, or plan your next event with our team.</p>
+        <div class="btns">
+          <a class="btn btn-gold" href="#book" data-mode="table">Book a table</a>
+          <a class="btn btn-ghost" href="#book" data-mode="event">Plan an event</a>
+        </div>
+        <div class="branches-strip"><span>Thalawathugoda</span><span>Malabe</span></div>
+      </div>
+      <div class="arch" role="img" aria-label="Arcadia restaurant entrance lit up for the season"></div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <span><b>Dine-in</b></span><span>Reservations</span><span><b>Delivery</b></span><span>Takeout</span><span><b>Outdoor seating</b></span>
+    </div>
+  </div>
+
+  <!-- TWO PATHS -->
+  <section id="dine">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Your evening</div>
+        <h2>Two ways to spend it at Arcadia</h2>
+        <p>Come in for a meal, or bring your people together for a moment worth remembering.</p>
+      </div>
+      <div class="paths">
+        <div class="path">
+          <div class="ic">D</div>
+          <h3>Dine with us</h3>
+          <p>Indoor tables under warm lights, or outdoor seating among the greenery.</p>
+          <ul><li>Lunch and dinner</li><li>Indoor or outdoor tables</li><li>Delivery and takeout too</li></ul>
+          <a class="btn btn-gold" href="#book" data-mode="table">Reserve a table</a>
+        </div>
+        <div class="path dark">
+          <div class="ic">C</div>
+          <h3>Celebrate with us</h3>
+          <p>Birthdays, homecomings, office dinners and private parties, planned with our team.</p>
+          <ul><li>Event spaces for small and large groups</li><li>Set menus for your guests</li><li>Decoration on request</li></ul>
+          <a class="btn btn-ghost" href="#book" data-mode="event">Send an event enquiry</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-sec" id="menu">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Menu</div>
+        <h2>Many kitchens, one table</h2>
+        <p>A sample of the multi-cuisine menu. The real dishes and prices will replace these.</p>
+      </div>
+      <div class="tabs" role="tablist" id="tabs">
+        <button class="tab" role="tab" aria-selected="true" data-cat="lanka">Sri Lankan</button>
+        <button class="tab" role="tab" aria-selected="false" data-cat="asian">Chinese &amp; Asian</button>
+        <button class="tab" role="tab" aria-selected="false" data-cat="western">Western</button>
+        <button class="tab" role="tab" aria-selected="false" data-cat="sweet">Desserts &amp; drinks</button>
+      </div>
+      <div class="dishes" id="dishes" aria-live="polite"></div>
+      <p class="menu-note">Sample items only. Prices to be added by the Arcadia team.</p>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events">
+    <div class="wrap">
+      <div class="events-grid">
+        <div>
+          <div class="eyebrow">Events</div>
+          <h2 style="font-size:clamp(2.1rem,4.4vw,3.2rem);margin:.6rem 0 .8rem">Celebrations held in a garden of light</h2>
+          <p style="color:var(--muted);margin:0;max-width:480px">Tell us the date, the guest count and the occasion. Our events team will come back with spaces, menus and pricing.</p>
+          <div class="ev-list">
+            <div class="ev"><h3>Birthdays</h3><p>From family dinners to full parties.</p></div>
+            <div class="ev"><h3>Weddings &amp; homecomings</h3><p>Dinner receptions and intimate functions.</p></div>
+            <div class="ev"><h3>Corporate</h3><p>Office dinners, launches and team nights.</p></div>
+            <div class="ev"><h3>Private parties</h3><p>Anniversaries, reunions and get-togethers.</p></div>
+          </div>
+          <a class="btn btn-gold" href="#book" data-mode="event" style="margin-top:2rem">Plan an event</a>
+        </div>
+        <div class="arch-sm" data-img="event.jpg"><span>event.jpg &middot; add event photo</span></div>
+      </div>
+      <div class="halls">
+        <div class="hall"><h3>Garden terrace</h3><div class="cap">[ ] guests</div><p>Outdoor space under the greenery and lights.</p></div>
+        <div class="hall"><h3>Main hall</h3><div class="cap">[ ] guests</div><p>Indoor space for larger functions.</p></div>
+        <div class="hall"><h3>Private room</h3><div class="cap">[ ] guests</div><p>Smaller gatherings and office dinners.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:2rem">
+        <div class="eyebrow">Ambience</div>
+        <h2>The Arcadia feeling</h2>
+      </div>
+      <div class="gallery">
+        <div class="arch-sm" data-img="g1.jpg"><span>g1.jpg</span></div>
+        <div class="arch-sm" data-img="g2.jpg"><span>g2.jpg</span></div>
+        <div class="arch-sm" data-img="g3.jpg"><span>g3.jpg</span></div>
+        <div class="arch-sm" data-img="g4.jpg"><span>g4.jpg</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking" id="book">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Reservations</div>
+        <h2>Book your table or event</h2>
+        <p>Fill in the details and send them on WhatsApp. The Arcadia team confirms availability with you.</p>
+      </div>
+      <div class="book-grid">
+        <form class="book-card" id="bookForm" novalidate>
+          <div class="mode" role="group" aria-label="Booking type">
+            <button type="button" id="mTable" aria-pressed="true">Table booking</button>
+            <button type="button" id="mEvent" aria-pressed="false">Event enquiry</button>
+          </div>
+
+          <div class="grid2">
+            <div class="field"><label for="bName">Name</label><input id="bName" autocomplete="name" placeholder="Your name"></div>
+            <div class="field"><label for="bPhone">Phone</label><input id="bPhone" type="tel" autocomplete="tel" placeholder="07X XXX XXXX"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label for="bBranch">Branch</label>
+              <select id="bBranch"><option>Thalawathugoda</option><option>Malabe</option></select></div>
+            <div class="field"><label for="bDate">Date</label><input id="bDate" type="date"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label for="bTime">Time</label><select id="bTime"></select></div>
+            <div class="field"><label for="bGuests">Guests</label><input id="bGuests" type="number" min="1" max="500" value="2" inputmode="numeric"></div>
+          </div>
+
+          <div class="only-table">
+            <div class="field"><label>Seating</label>
+              <div class="seat">
+                <label><input type="radio" name="seat" value="Indoor" checked> Indoor</label>
+                <label><input type="radio" name="seat" value="Outdoor"> Outdoor</label>
+                <label><input type="radio" name="seat" value="No preference"> No preference</label>
+              </div>
+            </div>
+            <div class="field"><label for="bOcc">Occasion (optional)</label>
+              <select id="bOcc"><option value="">None</option><option>Birthday</option><option>Anniversary</option><option>Date night</option><option>Business meal</option><option>Family dinner</option></select></div>
+          </div>
+
+          <div class="only-event">
+            <div class="grid2">
+              <div class="field"><label for="bType">Event type</label>
+                <select id="bType"><option>Birthday party</option><option>Wedding / Homecoming</option><option>Corporate event</option><option>Private party</option><option>Other</option></select></div>
+              <div class="field"><label for="bSpace">Preferred space</label>
+                <select id="bSpace"><option>Not sure</option><option>Garden terrace</option><option>Main hall</option><option>Private room</option></select></div>
+            </div>
+          </div>
+
+          <div class="field"><label for="bNotes">Notes (optional)</label><textarea id="bNotes" placeholder="Dietary needs, decoration, high chair, anything else"></textarea></div>
+
+          <div class="err" id="err" role="alert"></div>
+          <button class="send" type="submit" id="sendBtn">Send booking request on WhatsApp</button>
+          <div class="sent" id="sent">If WhatsApp did not open: <a id="waLink" target="_blank" rel="noopener">tap here to send</a></div>
+        </form>
+
+        <aside class="summary" aria-live="polite">
+          <h3>Your request</h3>
+          <dl id="sum"></dl>
+          <p>This is a request, not a confirmed booking. The team replies on WhatsApp to confirm.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Visit</div>
+        <h2>Find us</h2>
+      </div>
+      <div class="visit-grid">
+        <div class="vcard">
+          <h3>Thalawathugoda</h3>
+          <p>5 Wickramasinghapura Rd, Battaramulla 10120</p>
+          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Arcadia+Cafe+and+Restaurant+Wickramasinghapura+Rd+Battaramulla" target="_blank" rel="noopener">Open in Google Maps</a></p>
+        </div>
+        <div class="vcard">
+          <h3>Malabe</h3>
+          <p>[Add Malabe branch address]</p>
+          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Arcadia+Cafe+and+Restaurant+Malabe" target="_blank" rel="noopener">Open in Google Maps</a></p>
+        </div>
+        <div class="vcard">
+          <h3>Contact</h3>
+          <p>Phone: <a href="tel:+94772212800">+94 77 221 2800</a></p>
+          <p>Email: <a href="mailto:arcadiacolombo3@gmail.com">arcadiacolombo3@gmail.com</a></p>
+          <p>Instagram: <a href="https://www.instagram.com/arcadiacolombo" target="_blank" rel="noopener">@arcadiacolombo</a></p>
+          <p>Hours: [Add opening hours]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:.7rem"><img src="img/logo.png" alt="">&copy; Arcadia Cafe &amp; Restaurant</div>
+    <div><a href="https://www.instagram.com/arcadiacolombo" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+</footer>
+
+<a class="float-book" href="#book" data-mode="table">Book a table</a>
+
+<script>
+var WA = '94772212800';
+
+/* ---- Photo slots ---- */
+document.querySelectorAll('[data-img]').forEach(function(el){
+  var src = 'img/' + el.getAttribute('data-img');
+  var p = new Image();
+  p.onload = function(){ el.style.setProperty('--img','url("'+src+'")'); el.classList.add('has-img'); };
+  p.src = src;
+});
+
+/* ---- Menu tabs (sample dishes) ---- */
+var MENU = {
+  lanka: [
+    ['Lamprais','Rice, curries and sambol baked in banana leaf'],
+    ['Chicken kottu','Chopped roti with vegetables and spice'],
+    ['Devilled prawns','Sweet, spicy and tossed with onions'],
+    ['Rice and curry','A spread of seasonal curries'],
+    ['Seafood fried rice','Prawns, cuttlefish and fish'],
+    ['Hoppers platter','Plain and egg hoppers with sambol']
+  ],
+  asian: [
+    ['Hot butter cuttlefish','Crispy, buttery and spiced'],
+    ['Mixed fried rice','Chicken, egg and vegetables'],
+    ['Chop suey','Wok-tossed vegetables in sauce'],
+    ['Sweet and sour fish','Tangy sauce with peppers'],
+    ['Nasi goreng','Fried rice with egg and satay'],
+    ['Garlic noodles','Stir-fried with greens']
+  ],
+  western: [
+    ['Grilled chicken','With pepper sauce and vegetables'],
+    ['Creamy pasta','Chicken or seafood'],
+    ['Beef burger','With fries and house sauce'],
+    ['Fish and chips','Golden fried, served with tartare'],
+    ['Club sandwich','Layered and toasted'],
+    ['Caesar salad','With grilled chicken']
+  ],
+  sweet: [
+    ['Watalappan','Jaggery and coconut custard'],
+    ['Chocolate lava cake','Warm, with ice cream'],
+    ['Fruit platter','Seasonal tropical fruit'],
+    ['Iced coffee','Cold and creamy'],
+    ['Fresh juices','Lime, passion fruit, mango'],
+    ['Mocktails','Ask for the house selection']
+  ]
+};
+function showMenu(cat){
+  var box = document.getElementById('dishes');
+  box.innerHTML = '';
+  MENU[cat].forEach(function(d){
+    var w = document.createElement('div'); w.className = 'dish-wrap';
+    var row = document.createElement('div'); row.className = 'dish';
+    var h = document.createElement('h3'); h.textContent = d[0];
+    var dots = document.createElement('i'); dots.className = 'dots';
+    var pr = document.createElement('span'); pr.textContent = 'Rs. [ ]';
+    row.appendChild(h); row.appendChild(dots); row.appendChild(pr);
+    var p = document.createElement('p'); p.textContent = d[1];
+    w.appendChild(row); w.appendChild(p);
+    box.appendChild(w);
+  });
+}
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(x){ x.setAttribute('aria-selected','false'); });
+    t.setAttribute('aria-selected','true');
+    showMenu(t.getAttribute('data-cat'));
+  });
+});
+showMenu('lanka');
+
+/* ---- Booking form ---- */
+var form = document.getElementById('bookForm');
+var mode = 'table';
+var $ = function(id){ return document.getElementById(id); };
+
+/* time slots (sample hours) */
+(function(){
+  var sel = $('bTime');
+  for (var h = 11; h <= 22; h++) {
+    [0,30].forEach(function(m){
+      if (h === 22 && m === 30) return;
+      var hh = h > 12 ? h - 12 : h;
+      var label = hh + ':' + (m ? '30' : '00') + (h >= 12 ? ' PM' : ' AM');
+      var o = document.createElement('option'); o.textContent = label;
+      if (h === 19 && m === 0) o.selected = true;
+      sel.appendChild(o);
+    });
+  }
+})();
+
+/* date: today as minimum */
+(function(){
+  var d = new Date();
+  var iso = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  $('bDate').min = iso;
+  $('bDate').value = iso;
+})();
+
+function setMode(m){
+  mode = m;
+  form.classList.toggle('is-event', m === 'event');
+  $('mTable').setAttribute('aria-pressed', m === 'table');
+  $('mEvent').setAttribute('aria-pressed', m === 'event');
+  $('sendBtn').textContent = m === 'event' ? 'Send event enquiry on WhatsApp' : 'Send booking request on WhatsApp';
+  if (m === 'event' && Number($('bGuests').value) < 10) $('bGuests').value = 30;
+  if (m === 'table' && Number($('bGuests').value) > 20) $('bGuests').value = 2;
+  $('err').textContent = '';
+  updateSummary();
+}
+$('mTable').addEventListener('click', function(){ setMode('table'); });
+$('mEvent').addEventListener('click', function(){ setMode('event'); });
+document.querySelectorAll('[data-mode]').forEach(function(a){
+  a.addEventListener('click', function(){ setMode(a.getAttribute('data-mode')); });
+});
+
+function niceDate(v){
+  if (!v) return '';
+  var p = v.split('-');
+  var d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+  return d.toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+}
+function seatVal(){
+  var s = form.querySelector('input[name="seat"]:checked');
+  return s ? s.value : '';
+}
+function details(){
+  var rows = [
+    ['Type', mode === 'event' ? 'Event enquiry' : 'Table booking'],
+    ['Branch', $('bBranch').value],
+    ['Date', niceDate($('bDate').value)],
+    ['Time', $('bTime').value],
+    ['Guests', $('bGuests').value]
+  ];
+  if (mode === 'table') {
+    rows.push(['Seating', seatVal()]);
+    if ($('bOcc').value) rows.push(['Occasion', $('bOcc').value]);
+  } else {
+    rows.push(['Event', $('bType').value]);
+    rows.push(['Space', $('bSpace').value]);
+  }
+  return rows;
+}
+function updateSummary(){
+  var dl = $('sum'); dl.innerHTML = '';
+  details().forEach(function(r){
+    var div = document.createElement('div');
+    var dt = document.createElement('dt'); dt.textContent = r[0];
+    var dd = document.createElement('dd'); dd.textContent = r[1] || '-';
+    div.appendChild(dt); div.appendChild(dd); dl.appendChild(div);
+  });
+}
+form.addEventListener('input', updateSummary);
+form.addEventListener('change', updateSummary);
+updateSummary();
+
+function validate(){
+  var name = $('bName').value.trim();
+  var phone = $('bPhone').value.replace(/[^\d+]/g,'');
+  var g = Number($('bGuests').value);
+  if (!name) return 'Please enter your name.';
+  if (phone.replace(/\D/g,'').length < 9) return 'Please enter a valid phone number.';
+  if (!$('bDate').value || $('bDate').value < $('bDate').min) return 'Please choose today or a later date.';
+  if (!g || g < 1) return 'Please enter the number of guests.';
+  if (mode === 'table' && g > 20) return 'For more than 20 guests, please switch to Event enquiry.';
+  return '';
+}
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var msg = validate();
+  $('err').textContent = msg;
+  if (msg) return;
+
+  var lines = ['Hello Arcadia, I would like to ' + (mode === 'event' ? 'enquire about an event.' : 'book a table.'), ''];
+  lines.push('Name: ' + $('bName').value.trim());
+  lines.push('Phone: ' + $('bPhone').value.trim());
+  details().forEach(function(r){ if (r[0] !== 'Type') lines.push(r[0] + ': ' + r[1]); });
+  if ($('bNotes').value.trim()) lines.push('Notes: ' + $('bNotes').value.trim());
+  lines.push('', 'Please confirm availability. Thank you.');
+
+  var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(lines.join('\n'));
+  $('waLink').href = url;
+  $('sent').classList.add('show');
+  window.location.href = url;
+});
+
+/* ---- Mobile menu ---- */
+$('menuBtn').addEventListener('click', function(){ $('nav').classList.toggle('open'); });
+document.querySelectorAll('#nav a').forEach(function(a){
+  a.addEventListener('click', function(){ $('nav').classList.remove('open'); });
+});
+</script>
+</body>
+</html>
